@@ -67,32 +67,25 @@ public class FantasyQuestGUI extends JFrame {
         headerPanel.add(titleLabel, BorderLayout.NORTH);
         headerPanel.add(nextBattleLabel, BorderLayout.CENTER);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(2, 3, 9, 9));
+        JPanel buttonPanel = new JPanel(new GridLayout(1, 4, 9, 9));
         buttonPanel.setOpaque(false);
-        JButton currencyButton = new JButton("Check Currencies");
         JButton itemsButton = new JButton("Check Items");
         JButton addMonstersButton = new JButton("Add Monsters");
         JButton newGameButton = new JButton("New Game");
         styleButton(fightButton, true);
-        styleButton(currencyButton, false);
         styleButton(itemsButton, false);
         styleButton(addMonstersButton, false);
         styleButton(newGameButton, false);
-        JButton spacer = new JButton(" ");
-        spacer.setVisible(false);
 
         fightButton.addActionListener(e -> fightBattle());
-        currencyButton.addActionListener(e -> showMessage(player.displayCurrency()));
         itemsButton.addActionListener(e -> showMessage(player.displayItems()));
         addMonstersButton.addActionListener(e -> addMonsters());
         newGameButton.addActionListener(e -> startNewGame());
 
         buttonPanel.add(fightButton);
-        buttonPanel.add(currencyButton);
         buttonPanel.add(itemsButton);
         buttonPanel.add(addMonstersButton);
         buttonPanel.add(newGameButton);
-        buttonPanel.add(spacer);
 
         JPanel controls = new JPanel(new BorderLayout(0, 10));
         controls.setOpaque(false);
