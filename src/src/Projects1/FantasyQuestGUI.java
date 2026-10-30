@@ -211,6 +211,7 @@ public class FantasyQuestGUI extends JFrame {
         updateNextBattleLabel();
     }
 
+
     private void startNewGame() {
         gameAI.getMonsterEncounters().clear();
         player.getCurrency().replaceAll(amount -> 0);
