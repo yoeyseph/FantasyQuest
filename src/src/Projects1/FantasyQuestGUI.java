@@ -1,5 +1,7 @@
 package Projects1;
 
+// SHOUTOUT CHAT GPT
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -9,8 +11,9 @@ import java.awt.image.BufferedImage;
 
 public class FantasyQuestGUI extends JFrame {
 
+    //defining colors ----------------------------------------------------
     private static final Color WINDOW_BACKGROUND = new Color(246, 243, 235);
-    private static final Color PANEL_BACKGROUND = new Color(255, 253, 247);
+    private static final Color PANEL_BACKGROUND = new Color(174, 163, 128);
     private static final Color TEXT_COLOR = new Color(48, 43, 37);
     private static final Color BORDER_COLOR = new Color(194, 183, 162);
     private static final Color FIGHT_RED = new Color(205, 112, 107);
@@ -44,6 +47,15 @@ public class FantasyQuestGUI extends JFrame {
         setVisible(true);
     }
 
+
+    /**
+     Builds and arranges all GUI components including:
+     - Header
+     - Control buttons
+     - Player status panel
+     - Battle result area
+     - Battle history area
+     */
     private void buildGui() {
         setIconImage(createWindowIcon());
 
@@ -175,6 +187,11 @@ public class FantasyQuestGUI extends JFrame {
                 new EmptyBorder(5, 5, 5, 5));
     }
 
+    /**
+     Simulates a battle against the next monster in the queue.
+     Updates rewards, player inventory, status labels,
+     battle history, and encounter queue.
+     */
     private void fightBattle() {
         Monster next = gameAI.getMonsterEncounters().peek();
         if (next == null) {
@@ -202,6 +219,7 @@ public class FantasyQuestGUI extends JFrame {
         updatePlayerStatus();
     }
 
+    //Add randomly generated monsters to the encounter queue
     private void addMonsters() {
         int previousCount = gameAI.getMonsterEncounters().size();
         gameAI.addRandom();
@@ -211,7 +229,10 @@ public class FantasyQuestGUI extends JFrame {
         updateNextBattleLabel();
     }
 
-
+    /**
+     Resets all player progress and battle history,
+     then creates a fresh set of monsters for a new game.
+     */
     private void startNewGame() {
         gameAI.getMonsterEncounters().clear();
         player.getCurrency().replaceAll(amount -> 0);
@@ -265,6 +286,7 @@ public class FantasyQuestGUI extends JFrame {
         return icon;
     }
 
+    //main driver -----------
     public static void main(String[] args) {
         GameAI gameAI = new GameAI();
         gameAI.addRandom();
